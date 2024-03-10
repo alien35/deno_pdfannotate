@@ -1,6 +1,12 @@
 import { PDFDocument, rgb, join } from "./deps.ts";
 
-async function addTextAnnotationsToPdf(pdfPath: string, annotations: Array<any>) {
+async function addTextAnnotationsToPdf(
+  pdfPath: string,
+  annotations: Array<any>,
+  options?: {
+    output?: string;
+  }
+) {
   // Load the existing PDF document
   const pdfBytes = await Deno.readFile(pdfPath);
   const pdfDoc = await PDFDocument.load(pdfBytes);
