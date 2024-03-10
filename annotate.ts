@@ -7,8 +7,8 @@ export async function addTextAnnotationsToPdf(
     output?: string;
   }
 ) {
-  const pdfBytes = await Deno.readFile(pdfPath);
-  const pdfDoc = await PDFDocument.load(pdfBytes);
+  const pdfDoc = await PDFDocument.load(Deno.readFileSync(pdfPath));
+
   const outputFilePath = options?.output || join(Deno.cwd(), "annotated.pdf");
 
   annotations.forEach(annotation => {
